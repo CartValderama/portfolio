@@ -3,6 +3,10 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import ActiveSectionContextProvider from "@/context/active-section-context";
+import { Toaster } from "react-hot-toast";
+import Footer from "@/components/footer";
+import ThemeSwitch from "@/components/theme-switch";
+import ThemeContextProvider from "@/context/theme-context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,12 +23,17 @@ export default function RootLayout({
   return (
     <html lang="en" className="!scroll-smooth">
       <body
-        className={`${inter.className} bg-gray-50 text-stone-700 relative h-[5000px] pt-40`}
+        className={`${inter.className} bg-gray-50 text-stone-700 relative pt-40 dark:bg-stone-800 dark:text-stone-50 dark:text-opacity-90`}
       >
-        <ActiveSectionContextProvider>
-          <Header />
-          {children}
-        </ActiveSectionContextProvider>
+        <ThemeContextProvider>
+          <ActiveSectionContextProvider>
+            <Header />
+            {children}
+            <Toaster position="bottom-center" />
+            <Footer />
+            <ThemeSwitch />
+          </ActiveSectionContextProvider>
+        </ThemeContextProvider>
       </body>
     </html>
   );

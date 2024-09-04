@@ -4,16 +4,17 @@ import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { BsArrowRight } from "react-icons/bs";
+import { BsArrowRight, BsLinkedin } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
 import { useSectionInView } from "@/lib/hooks";
+import { FaGithubSquare } from "react-icons/fa";
 
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.8);
 
   return (
     <section className="mb-36 max-w-4xl scroll-mt-96" id="home" ref={ref}>
-      <div className="flex justify-between items-center lg:items-end flex-col lg:flex-row-reverse">
+      <div className="flex justify-between items-center flex-col lg:flex-row-reverse">
         <motion.div
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -56,20 +57,28 @@ export default function Intro() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
           >
-            <Link
-              href="#contact"
-              className="group bg-sky-900 text-white px-7 py-3 flex items-center gap-2 rounded-md outline-none hover:scale-105 hover:bg-stone-700 active:scale-105 transition"
-            >
-              Contact me
-              <BsArrowRight className="opacity-70 group-hover:translate-x-1 transition" />
-            </Link>
             <a
               href="/CV.pdf"
               download
-              className="group bg-white px-7 py-3 flex items-center gap-2 rounded-md outline-none focus:scale-105 hover:scale-105 active:scale-105 transition border border-black/10"
+              className="group bg-sky-900 text-white px-7 py-3 flex items-center gap-2 rounded-md outline-none hover:scale-105 hover:bg-stone-700 active:scale-105 transition dark:bg-white dark:text-stone-700"
             >
               Download CV
               <HiDownload className="opacity-60 group-hover:translate-y-[0.1rem] transition" />
+            </a>
+            <a
+              className="bg-white p-4 text-stone-600 hover:text-stone-950 borderBlack flex items-center gap-2 rounded-md focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
+              href="https://linkedin.com"
+              target="_blank"
+            >
+              <BsLinkedin />
+            </a>
+
+            <a
+              className="bg-white p-4 text-stone-600 flex items-center gap-2 rounded-md focus:scale-[1.15] hover:scale-[1.15] hover:text-stone-950 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60 borderBlack"
+              href="https://github.com"
+              target="_blank"
+            >
+              <FaGithubSquare />
             </a>
           </motion.div>
         </div>
